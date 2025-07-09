@@ -40,4 +40,4 @@
 
 # Diagrama E/R
 
-<img src="diagramaER.png" alt="diagrama entidad/relacion">
+<img src="./img/diagramaER.png" alt="diagrama relacion/entidad">
