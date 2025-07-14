@@ -13,7 +13,6 @@ export enum EBreed {
 }
 
 export default interface IPet {
-  id: number;
   name: string;
   breed: EBreed;
   birthdate: string;

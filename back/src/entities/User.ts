@@ -1,21 +1,21 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Credential } from "./Credentials";
 
 @Entity({
   name: "users",
 })
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: "Id" })
   id: number;
-  @Column({
-    length: 100,
-  })
+  @Column({ length: 100, name: "Nombre" })
   name: string;
-  @Column()
+  @Column({ name: "Email" })
   email: string;
-  @Column()
+  @Column({ name: "Cumpleaños" })
   birthdate: string;
-  @Column("integer")
+  @Column({ type: "integer", name: "DNI" })
   nDni: number;
-  @Column()
-  credential_id: number;
+  @OneToOne(() => Credential)
+  @JoinColumn()
+  credential: Credential;
 }

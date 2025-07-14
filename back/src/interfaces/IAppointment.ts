@@ -10,7 +10,6 @@ export enum EService {
 }
 
 export default interface IAppointments {
-  id: number;
   date: string;
   time: string;
   status: EStatus;

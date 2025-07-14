@@ -4,4 +4,5 @@ export default interface IAppointmentDto {
   date: string;
   time: string;
   service: EService;
+  username: string;
 }
