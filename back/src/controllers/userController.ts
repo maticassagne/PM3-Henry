@@ -1,24 +1,33 @@
 import { Request, Response } from "express";
-import { getUserByIdService, getAllUserService, createUserService, findUserByCredentialId } from "../services/userServices";
+import { getUserByIdService, getAllUserService, createUserService, findUserByCredentialId, findUserByUsername, findUserByEmail } from "../services/userServices";
 import { validateCredentialService } from "../services/credentialService";
 import { User } from "../entities/User";
 
 export const registerUserController = async (req: Request, res: Response) => {
   try {
     const { name, email, birthdate, nDni, username, password } = req.body;
+    // VERIFICO SI EL NOMBRE DE USUARIO EXISTE
+    const foundUser = await findUserByUsername(username);
+    // VERIFICO SI EL EMAIL ESTA REGISTRADO
+    const foundEmail = await findUserByEmail(email);
+    // CREO NUEVO USUARIO
     const newUser: User = await createUserService({ name, email, birthdate, nDni, username, password });
-    res.status(200).json(newUser);
-  } catch (error: any) {
-    res.status(404).json({ msg: "El usuario ya existe" });
+    res.status(201).json(newUser);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(400).json({ error: error.message });
+    }
   }
 };
 
 export const getAllUsersController = async (req: Request, res: Response) => {
   try {
     const users: User[] = await getAllUserService();
-    res.status(201).json(users);
-  } catch (error: any) {
-    res.status(404).json({ message: error.message });
+    res.status(200).json(users);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ error: error.message });
+    }
   }
 };
 
@@ -27,8 +36,10 @@ export const getUserById = async (req: Request, res: Response) => {
   try {
     const user: User = await getUserByIdService(Number(id));
     res.status(200).json(user);
-  } catch (error: any) {
-    res.status(404).json({ message: error.message });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ error: error.message });
+    }
   }
 };
 
@@ -38,10 +49,12 @@ export const loginUsersController = async (req: Request, res: Response) => {
     const credentialId: number = await validateCredentialService({ username, password });
     const user = await findUserByCredentialId(credentialId);
     res.status(200).json({
-      user,
       login: true,
+      user,
     });
-  } catch (error: any) {
-    res.status(404).json({ msg: "Credenciales Incorrectas" });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(400).json({ error: error.message });
+    }
   }
 };

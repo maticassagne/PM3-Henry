@@ -1,14 +1,13 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./User";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({
   name: "credentials",
 })
 export class Credential {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: "id" })
   id: number;
-  @Column()
+  @Column({ name: "nombre_usuario", unique: true })
   username: string;
-  @Column()
+  @Column({ name: "pass_usuario" })
   password: string;
 }

@@ -9,7 +9,7 @@ export enum EBreed {
   YorkshireTerrier = "Yorkshire Terrier",
   Dachshund = "Dachshund (Salchica)",
   Boxer = "Boxer",
-  OtraRaza = "Otra raza",
+  Other = "Otra raza",
 }
 
 export default interface IPet {

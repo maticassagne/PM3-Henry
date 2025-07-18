@@ -1,21 +1,27 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Credential } from "./Credentials";
+import { Pet } from "./Pet";
+import { Appointment } from "./Appointments";
 
 @Entity({
   name: "users",
 })
 export class User {
-  @PrimaryGeneratedColumn({ name: "Id" })
+  @PrimaryGeneratedColumn({ name: "id" })
   id: number;
-  @Column({ length: 100, name: "Nombre" })
+  @Column({ length: 100, name: "nombre" })
   name: string;
-  @Column({ name: "Email" })
+  @Column({ name: "email", unique: true })
   email: string;
-  @Column({ name: "Cumpleaños" })
+  @Column({ name: "cumpleaños" })
   birthdate: string;
   @Column({ type: "integer", name: "DNI" })
   nDni: number;
   @OneToOne(() => Credential)
-  @JoinColumn()
+  @JoinColumn({ name: "credential_id" })
   credential: Credential;
+  @OneToMany(() => Appointment, (userId) => userId.userId)
+  appointments: Appointment[];
+  @OneToMany(() => Pet, (id) => id.userId)
+  pets: Pet[];
 }

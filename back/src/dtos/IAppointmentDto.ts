@@ -1,8 +1,9 @@
-import { EService } from "../interfaces/IAppointment";
+import { EService, EStatus } from "../interfaces/IAppointment";
 
 export default interface IAppointmentDto {
   date: string;
   time: string;
   service: EService;
-  username: string;
+  userId: number;
+  petId: number;
 }

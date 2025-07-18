@@ -1,8 +1,7 @@
-import server from "./server";
-import { PORT } from "./config/envs";
 import "reflect-metadata";
+import server from "./server";
+import { DBPORT, PORT } from "./config/envs";
 import { AppDataSource } from "./config/data-source.ts";
-import { preLoad } from "./config/helpers/preLoadDB";
 
 // AppDataSource.initialize().then((res) => {
 //   console.log("Conexión con la base de datos exitosa");
@@ -12,10 +11,13 @@ import { preLoad } from "./config/helpers/preLoadDB";
 // });
 
 const initializeApp = async () => {
-  await AppDataSource.initialize().then((res) => {
-    console.log("Conexión con la base de datos exitosa");
-  });
-  // await preLoad();
+  try {
+    await AppDataSource.initialize().then((res) => {
+      console.log(`Conexión con la base de datos exitosa, en puerto ${DBPORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
   server.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`);
   });

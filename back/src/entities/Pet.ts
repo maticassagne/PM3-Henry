@@ -1,18 +1,23 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { EBreed } from "../interfaces/IPet";
+import { User } from "./User";
+import { Appointment } from "./Appointments";
 
 @Entity({
   name: "pets",
 })
 export class Pet {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: "id" })
   id: number;
-  @Column()
+  @Column({ name: "nombre_mascota" })
   name: string;
-  @Column()
+  @Column({ name: "nacimiento_mascota" })
   birthdate: string;
-  @Column()
+  @Column({ name: "raza", default: EBreed.Other })
   breed: EBreed;
-  @Column()
+  @ManyToOne(() => User, (pets) => pets.pets)
+  @JoinColumn({ name: "dueno" })
   userId: number;
+  @OneToMany(() => Appointment, (id) => id.petId)
+  petAppointments: Appointment[];
 }

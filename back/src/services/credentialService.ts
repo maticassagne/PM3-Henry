@@ -1,26 +1,23 @@
-import { CredentialModel } from "../config/data-source.ts";
+import { AppDataSource } from "../config/data-source.ts";
 import ICredentialDto from "../dtos/ICredentialDto";
 import { Credential } from "../entities/Credentials";
+import CredentialRepository from "../repositories/credentialRepo";
 
 export const createCredentialService = async (credential: ICredentialDto): Promise<Credential> => {
-  const { username, password } = credential;
-  const newCredential: Credential = CredentialModel.create({
-    username,
-    password,
-  });
-  const save = await CredentialModel.save(newCredential);
+  const newCredential = await CredentialRepository.create(credential);
+  await CredentialRepository.save(newCredential);
   return newCredential;
 };
 
 export const validateCredentialService = async (credential: ICredentialDto): Promise<number> => {
-  const credentialFound: Credential | null = await CredentialModel.findOne({
+  const credentialFound: Credential | null = await CredentialRepository.findOne({
     where: {
       username: credential.username,
       password: credential.password,
     },
   });
   if (!credentialFound) {
-    throw Error();
+    throw new Error(`Usuario o contraseñas incorrectos.`);
   }
   return credentialFound.id;
 };

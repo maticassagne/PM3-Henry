@@ -4,9 +4,9 @@ export enum EStatus {
 }
 
 export enum EService {
-  Baño = "Baño y peinado",
-  Corte = "Corte de pelo",
-  Full = "Corte de pelo, uñas y baño",
+  BANO = "Baño",
+  CORTE = "Corte",
+  FULL = "Full",
 }
 
 export default interface IAppointments {

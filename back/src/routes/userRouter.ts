@@ -3,8 +3,8 @@ import { registerUserController, getAllUsersController, loginUsersController, ge
 
 const userRouter: Router = Router();
 
-userRouter.get("/:id", getUserById);
 userRouter.get("/", getAllUsersController);
+userRouter.get("/:id", getUserById);
 userRouter.post("/register", registerUserController);
 userRouter.post("/login", loginUsersController);
 
