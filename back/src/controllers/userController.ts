@@ -15,7 +15,7 @@ export const registerUserController = async (req: Request, res: Response) => {
     res.status(201).json(newUser);
   } catch (error) {
     if (error instanceof Error) {
-      res.status(400).json({ error: error.message });
+      res.status(400).json({ success: false, error: error.message });
     }
   }
 };
@@ -26,7 +26,7 @@ export const getAllUsersController = async (req: Request, res: Response) => {
     res.status(200).json(users);
   } catch (error) {
     if (error instanceof Error) {
-      res.status(404).json({ error: error.message });
+      res.status(404).json({ success: false, error: error.message });
     }
   }
 };
@@ -38,7 +38,7 @@ export const getUserById = async (req: Request, res: Response) => {
     res.status(200).json(user);
   } catch (error) {
     if (error instanceof Error) {
-      res.status(404).json({ error: error.message });
+      res.status(404).json({ success: false, error: error.message });
     }
   }
 };
@@ -54,7 +54,7 @@ export const loginUsersController = async (req: Request, res: Response) => {
     });
   } catch (error) {
     if (error instanceof Error) {
-      res.status(400).json({ error: error.message });
+      res.status(400).json({ success: false, error: error.message });
     }
   }
 };

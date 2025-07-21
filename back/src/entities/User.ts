@@ -1,6 +1,5 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Credential } from "./Credentials";
-import { Pet } from "./Pet";
 import { Appointment } from "./Appointments";
 
 @Entity({
@@ -22,6 +21,4 @@ export class User {
   credential: Credential;
   @OneToMany(() => Appointment, (userId) => userId.userId)
   appointments: Appointment[];
-  @OneToMany(() => Pet, (id) => id.userId)
-  pets: Pet[];
 }

@@ -2,7 +2,6 @@ import { DBNAME, DBPORT, DBPASS, DBUSER } from "./envs";
 import { DataSource } from "typeorm";
 import { User } from "../entities/User";
 import { Credential } from "../entities/Credentials";
-import { Pet } from "../entities/Pet";
 import { Appointment } from "../entities/Appointments";
 
 export const AppDataSource = new DataSource({
@@ -12,10 +11,10 @@ export const AppDataSource = new DataSource({
   username: DBUSER,
   password: DBPASS,
   database: DBNAME,
-  // dropSchema: true,
-  synchronize: true,
+  dropSchema: false,
+  synchronize: false,
   logging: ["error"],
-  entities: [User, Credential, Pet, Appointment],
+  entities: [User, Credential, Appointment],
   subscribers: [],
   migrations: [],
 });

@@ -4,9 +4,9 @@ export enum EStatus {
 }
 
 export enum EService {
-  BANO = "Baño",
-  CORTE = "Corte",
-  FULL = "Full",
+  CONSULTA = "Consulta",
+  CONTROL = "Control",
+  ESTUDIOS = "Estudios",
 }
 
 export default interface IAppointments {

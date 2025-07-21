@@ -1,0 +1,49 @@
+.conteiner {
+  background-color: #8e8ca3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-style: double;
+  border-bottom-color: white;
+}
+
+.logoSection {
+  display: flex;
+  margin-left: 1.563rem;
+  img {
+    border-radius: 0.625rem;
+    height: 4.375rem;
+  }
+}
+
+.linksSection {
+  /* border: solid rgb(255, 255, 255); */
+  display: flex;
+  justify-content: space-around;
+  gap: 5rem;
+  color: antiquewhite;
+  font-size: 2.188rem;
+  text-shadow: 0.25rem 0.25rem 0.5rem black;
+  padding: 0.313rem;
+  span {
+    /* border: solid blue; */
+    padding: 0 0.625rem;
+  }
+  span:hover {
+    border-radius: 0.938rem;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+}
+
+.avatarSection {
+  display: flex;
+  padding: 0.625rem 0;
+  margin-right: 6.25rem;
+  img {
+    border-radius: 50%;
+    height: 4.375rem;
+  }
+}

@@ -1,0 +1,26 @@
+.conteiner {
+  width: min-content;
+  margin: 50px 0 0 50px;
+  padding: 10px;
+  color: black;
+  background-color: #8e8ca3;
+  /* border: solid 3px red; */
+  display: flex;
+  flex-direction: column;
+  img {
+    border-style: double;
+    border-color: white;
+    height: 350px;
+  }
+}
+
+.text {
+  /* border: solid 3px red; */
+  text-align: center;
+  h3 {
+    font-size: 23px;
+  }
+  p {
+    font-size: 18px;
+  }
+}

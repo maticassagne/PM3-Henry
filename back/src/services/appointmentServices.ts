@@ -1,10 +1,8 @@
 import IAppointmentDto from "../dtos/IAppointmentDto";
 import { Appointment } from "../entities/Appointments";
-import { Pet } from "../entities/Pet";
 import { User } from "../entities/User";
 import { EStatus } from "../interfaces/IAppointment";
 import AppointmentRepository from "../repositories/appointmentsRepo";
-import { getPetByIdService } from "./petService";
 import { getUserByIdService } from "./userServices";
 
 export const getAllAppointmentsService = async (): Promise<Appointment[]> => {
@@ -21,13 +19,11 @@ export const getAppointmentByIdService = async (id: number): Promise<Appointment
 };
 
 export const createNewAppointmentService = async (data: IAppointmentDto): Promise<Appointment> => {
-  const { date, time, service, userId, petId } = data;
+  const { date, time, service, userId } = data;
   const userFound: User = await getUserByIdService(userId);
-  const petFound: Pet = await getPetByIdService(petId);
   const newAppointment: Appointment = await AppointmentRepository.create({ date, time, service });
   newAppointment.userId = userFound;
   newAppointment.status = EStatus.ACTIVO;
-  newAppointment.petId = petFound;
   await AppointmentRepository.save(newAppointment);
   return newAppointment;
 };

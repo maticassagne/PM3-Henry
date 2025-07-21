@@ -1,0 +1,36 @@
+.conteiner {
+  display: flex;
+  justify-content: space-around;
+  gap: 185px;
+  align-items: center;
+  background-color: #8e8ca3;
+  border-radius: 15px;
+  color: #c5f7f0;
+  margin: 50px 0 20px 70px;
+  height: 100px;
+  width: 90%;
+  font-size: 25px;
+}
+
+.active {
+  background-color: #72577c;
+  padding: 10px;
+  border-radius: 10px;
+  color: #c5f7f0;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: thin;
+  &:hover {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+  }
+}
+
+.canceled {
+  background-color: #72577c;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: thin;
+  color: rgb(236, 103, 103);
+}

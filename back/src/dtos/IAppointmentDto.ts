@@ -5,5 +5,4 @@ export default interface IAppointmentDto {
   time: string;
   service: EService;
   userId: number;
-  petId: number;
 }

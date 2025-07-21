@@ -26,9 +26,9 @@ export const getAppointmentByIdController = async (req: Request, res: Response) 
 };
 
 export const newAppointmentController = async (req: Request, res: Response) => {
-  const { date, time, service, userId, petId } = req.body;
+  const { date, time, service, userId } = req.body;
   try {
-    const newAppointment: Appointment = await createNewAppointmentService({ date, time, service, userId, petId });
+    const newAppointment: Appointment = await createNewAppointmentService({ date, time, service, userId });
     res.status(201).json(newAppointment);
   } catch (error) {
     if (error instanceof Error) {

@@ -1,4 +1,3 @@
-import { AppDataSource } from "../config/data-source.ts";
 import IUserDto from "../dtos/UserDto";
 import { User } from "../entities/User";
 import CredentialRepository from "../repositories/credentialRepo";
@@ -7,7 +6,7 @@ import { createCredentialService } from "./credentialService";
 
 export const getAllUserService = async (): Promise<User[]> => {
   const allUser = await UserRepository.find({
-    relations: { appointments: true, pets: true },
+    relations: { appointments: true },
   });
   return allUser;
 };
@@ -15,7 +14,7 @@ export const getAllUserService = async (): Promise<User[]> => {
 export const getUserByIdService = async (id: number): Promise<User> => {
   const userFound: User | null = await UserRepository.findOne({
     where: { id },
-    relations: { appointments: true, pets: true },
+    relations: { appointments: true },
   });
   if (!userFound) {
     throw new Error(`No se encontró el usario con el Id: ${id}`);
