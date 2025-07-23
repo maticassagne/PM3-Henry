@@ -12,7 +12,10 @@ export const registerUserController = async (req: Request, res: Response) => {
     const foundEmail = await findUserByEmail(email);
     // CREO NUEVO USUARIO
     const newUser: User = await createUserService({ name, email, birthdate, nDni, username, password });
-    res.status(201).json(newUser);
+    res.status(201).json({
+      message: `Usuario ${newUser.name} creado con exito`,
+      userId: newUser.id,
+    });
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({ success: false, error: error.message });
@@ -50,6 +53,7 @@ export const loginUsersController = async (req: Request, res: Response) => {
     const user = await findUserByCredentialId(credentialId);
     res.status(200).json({
       login: true,
+      message: "Login exitoso.",
       user,
     });
   } catch (error) {

@@ -10,6 +10,13 @@ export const validateUser = (req: Request, res: Response, next: NextFunction) =>
     });
   }
 
+  if (username.length < 4) {
+    return res.status(400).json({
+      success: false,
+      message: "El nombre de usuario debe tener al menos 4 caracteres",
+    });
+  }
+
   if (username.length > 100) {
     return res.status(400).json({
       success: false,

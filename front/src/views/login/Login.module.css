@@ -1,0 +1,90 @@
+.container {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #c5f7f0 0%, #a9c2c9 100%);
+  box-shadow: 0 8px 20px rgba(86, 33, 85, 0.2);
+}
+
+.title {
+  text-align: center;
+  color: #562155;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #72577c, transparent);
+  margin: 1rem 0 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.8rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #562155;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #a9c2c9;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #72577c;
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(142, 140, 163, 0.3);
+}
+
+.input::placeholder {
+  color: #8e8ca3;
+  opacity: 0.7;
+}
+
+.error {
+  display: block;
+  margin-top: 0.5rem;
+  color: #ff4d4f;
+  font-size: 0.85rem;
+}
+
+.button {
+  width: 100%;
+  padding: 1rem;
+  background: #562155;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.button:hover {
+  background: #72577c;
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  background: #8e8ca3;
+  cursor: not-allowed;
+  transform: none;
+}
