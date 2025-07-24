@@ -6,6 +6,7 @@ import Register from "./views/register/Register";
 import Login from "./views/login/Login";
 import Landing from "./views/landing/Landing";
 import About from "./views/aboutUs/AboutUs";
+import Appointment from "./views/newAppointment/Appointment";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/myappointments" element={<MyAppointments />} />
-        <Route path="/appointment" element={<MyAppointments />} />
+        <Route path="/appointment" element={<Appointment />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

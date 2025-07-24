@@ -1,7 +1,119 @@
-.conteiner {
-  h1 {
-    justify-self: center;
-    margin-top: 2.5rem;
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #562155;
+  margin-bottom: 2rem;
+}
+
+.highlight {
+  color: #72577c;
+  font-weight: 700;
+}
+
+.statusFilters {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.filterButton {
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filterButton:hover {
+  transform: translateY(-2px);
+}
+
+.all {
+  background-color: #a9c2c9;
+  color: #562155;
+}
+
+.active {
+  background-color: #c5f7f0;
+  color: #562155;
+}
+
+.canceled {
+  background-color: #8e8ca3;
+  color: white;
+}
+
+.appointmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.noAppointments {
+  text-align: center;
+  grid-column: 1 / -1;
+  color: #562155;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.activeFilter {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(86, 33, 85, 0.2);
+  font-weight: 700;
+}
+
+.filterButton:hover:not(.activeFilter) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.all.activeFilter {
+  background-color: #8e8ca3;
+  color: white;
+}
+
+.active.activeFilter {
+  background-color: #562155;
+  color: white;
+}
+
+.canceled.activeFilter {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.noAppointments {
+  text-align: center;
+  grid-column: 1 / -1;
+  color: #562155;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: rgba(201, 201, 201, 0.1);
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
   }
-  color: black;
+
+  .statusFilters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .appointmentsGrid {
+    grid-template-columns: 1fr;
+  }
 }

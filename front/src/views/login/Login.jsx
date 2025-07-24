@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../login/Login.module.css";
 const LOGIN_URL = "http://localhost:3000/users/login";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const initialState = {
     username: "",
     password: "",
@@ -19,6 +22,11 @@ const Login = () => {
     return errors;
   };
 
+  const handleClickRegister = (event) => {
+    event.preventDefault;
+    navigate("/register");
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -30,10 +38,10 @@ const Login = () => {
     axios
       .post(LOGIN_URL, user)
       .then(({ data }) => {
-        console.log(data.user);
         localStorage.setItem("user", JSON.stringify(data.user));
         alert(data.message);
         setUser(initialState);
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error.response.data.error);
@@ -64,6 +72,12 @@ const Login = () => {
           Iniciar sesión
         </button>
       </form>
+      <div className={styles.redirectContainer}>
+        <p className={styles.redirectText}>¿No tienes usuario?</p>
+        <button className={styles.redirectButton} onClick={handleClickRegister}>
+          Regístrate aquí
+        </button>
+      </div>
     </div>
   );
 };

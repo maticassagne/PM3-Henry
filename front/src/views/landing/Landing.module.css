@@ -147,3 +147,32 @@
   max-width: 800px;
   margin: 0 auto;
 }
+
+.logout {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.logout:hover {
+  background-color: #ff7875;
+  transform: translateY(-2px);
+}
+
+/* Estilos para el mensaje de bienvenida */
+.welcomeMessage {
+  color: #562155;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Ajustes para los botones cuando está logueado */
+.authButtons.loggedIn {
+  justify-content: space-between;
+}
+
+/* Efecto para botones deshabilitados */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}

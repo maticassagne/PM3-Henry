@@ -97,6 +97,22 @@
   cursor: pointer;
 }
 
+.authButton {
+  background: none;
+  border: none;
+  color: #8e8ca3;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.authButton:hover {
+  color: #562155;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .navLinks {

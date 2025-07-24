@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validateUser from "../../helpers/validateUser";
 import axios from "axios";
 import styles from "../register/Register.module.css";
 const REGISTER_URL = "http://localhost:3000/users/register";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const initialState = {
     name: "",
     email: "",
@@ -17,6 +20,10 @@ const Register = () => {
 
   const [user, setUser] = useState(initialState);
   const [errors, setErrors] = useState(initialState);
+
+  const handleClickLogin = () => {
+    navigate("/login");
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,6 +46,7 @@ const Register = () => {
       .then((data) => {
         alert(data.data.message);
         setUser(initialState);
+        navigate("/myappointments");
       })
       .catch((error) => {
         alert(`Error al crear usuario: ${error.response.data.error}`);
@@ -57,6 +65,12 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.redirectContainer}>
+        <p className={styles.redirectText}>¿Ya tienes usuario?</p>
+        <button className={styles.redirectButton} onClick={handleClickLogin}>
+          Inicia sesión aquí
+        </button>
+      </div>
       <h1 className={styles.title}>Registro</h1>
       <hr className={styles.hr} />
       <form onSubmit={handleSubmit}>

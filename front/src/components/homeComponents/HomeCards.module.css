@@ -4,7 +4,6 @@
   padding: 10px;
   color: black;
   background-color: #8e8ca3;
-  /* border: solid 3px red; */
   display: flex;
   flex-direction: column;
   img {
@@ -15,7 +14,6 @@
 }
 
 .text {
-  /* border: solid 3px red; */
   text-align: center;
   h3 {
     font-size: 23px;

@@ -7,10 +7,20 @@ import atencionVeterinaria from "../../assets/atencionVeterinaria.jpg";
 import localVeterinaria from "../../assets/localVeterinaria.jpg";
 import tecnoVeterinaria from "../../assets/tecnoVeterinaria.jpg";
 import alimentosMedicados from "../../assets/alimentosMedicados.png";
+import { getUserIdFromLocalStorage } from "../../helpers/localUserData";
 
 const LandingPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  const login = getUserIdFromLocalStorage();
+
+  const handleLogout = () => {
+    const confirmed = window.confirm("¿Desea cerrar sesión?");
+    if (confirmed) {
+      localStorage.removeItem("user");
+      navigate("/login");
+    }
+  };
 
   return (
     <div className={styles.landing}>
@@ -59,33 +69,33 @@ const LandingPage = () => {
 
       <section className={styles.authSection}>
         <div className={styles.authCard}>
-          <h2 className={styles.authTitle}>{isLoggedIn ? "¡Bienvenido de vuelta!" : "¿Ya tienes una cuenta?"}</h2>
-          <p className={styles.authText}>{isLoggedIn ? "Gestiona los turnos de tu mascota desde tu perfil." : "Regístrate para reservar turnos online y acceder a descuentos exclusivos."}</p>
-          <div className={styles.authButtons}>
-            {isLoggedIn ? (
-              <button
-                className={`${styles.button} ${styles.primary}`}
-                onClick={() => navigate("/profile")} // Ruta futura para perfil
-              >
-                Ir a mi perfil
-              </button>
-            ) : (
-              <>
-                <button
-                  className={`${styles.button} ${styles.primary}`}
-                  onClick={() => navigate("/register")} // Navega a registro
-                >
+          {login ? (
+            <>
+              <h2 className={styles.authTitle}>¡Bienvenido de nuevo!</h2>
+              <p className={styles.authText}>Estás autenticado en Sauce Veterinaria.</p>
+              <div className={styles.authButtons}>
+                <button className={`${styles.button} ${styles.primary}`} onClick={() => navigate("/home")}>
+                  Ir al Home!
+                </button>
+                <button className={`${styles.button} ${styles.logout}`} onClick={handleLogout}>
+                  Cerrar sesión
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 className={styles.authTitle}>¡Bienvenido! ¿Ya tienes una cuenta?</h2>
+              <p className={styles.authText}>Regístrate para reservar turnos online y acceder a descuentos exclusivos.</p>
+              <div className={styles.authButtons}>
+                <button className={`${styles.button} ${styles.primary}`} onClick={() => navigate("/register")}>
                   Registrarse
                 </button>
-                <button
-                  className={`${styles.button} ${styles.secondary}`}
-                  onClick={() => navigate("/login")} // Navega a login
-                >
+                <button className={`${styles.button} ${styles.secondary}`} onClick={() => navigate("/login")}>
                   Iniciar sesión
                 </button>
-              </>
-            )}
-          </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
     </div>

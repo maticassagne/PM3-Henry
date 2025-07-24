@@ -1,36 +1,79 @@
-.conteiner {
+.card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-around;
-  gap: 185px;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: default;
+}
+
+.activeCard {
+  background: white;
+  border-left: 5px solid #a9c2c9;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.activeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(86, 33, 85, 0.15);
+}
+
+.canceledCard {
+  background: #f8f8f8;
+  border-left: 5px solid #8e8ca3;
+  opacity: 0.8;
+}
+
+.dateTime {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #8e8ca3;
-  border-radius: 15px;
-  color: #c5f7f0;
-  margin: 50px 0 20px 70px;
-  height: 100px;
-  width: 90%;
-  font-size: 25px;
+  margin-bottom: 0.5rem;
 }
 
-.active {
-  background-color: #72577c;
-  padding: 10px;
-  border-radius: 10px;
-  color: #c5f7f0;
-  -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: thin;
-  &:hover {
-    cursor: pointer;
-    background-color: red;
-    color: white;
-  }
+.day {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #562155;
 }
 
-.canceled {
-  background-color: #72577c;
-  padding: 10px;
-  border-radius: 10px;
-  -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: thin;
-  color: rgb(236, 103, 103);
+.time {
+  background: #e0e0e0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.service h3 {
+  color: #72577c;
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.status {
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.status small {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+}
+
+.activeStatus {
+  background-color: #c5f7f0;
+  color: #2e7d32;
+}
+
+.canceledStatus {
+  background-color: #ffebee;
+  color: #c62828;
 }

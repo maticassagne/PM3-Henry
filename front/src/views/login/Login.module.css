@@ -88,3 +88,35 @@
   cursor: not-allowed;
   transform: none;
 }
+
+.redirectContainer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #a9c2c9;
+}
+
+.redirectText {
+  color: #562155;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.redirectButton {
+  background: none;
+  border: none;
+  color: #72577c;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+}
+
+.redirectButton:hover {
+  color: #562155;
+  text-decoration-color: currentColor;
+}

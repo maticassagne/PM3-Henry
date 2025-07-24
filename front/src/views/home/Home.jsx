@@ -3,6 +3,7 @@ import styles from "../home/Home.module.css";
 import consultaVet from "../../assets/consultaVet.png";
 import controlVet from "../../assets/controlVet.jpg";
 import rayoxVet from "../../assets/rayosxVet.jpeg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const services = [
@@ -12,7 +13,7 @@ const Home = () => {
       description:
         "Exámenes completos, diagnóstico personalizado y seguimiento continuo para garantizar el bienestar de tu mascota. Nuestros veterinarios especializados escuchan todas tus inquietudes.",
       cta: "Reservar consulta",
-      color: "#72577c",
+      color: "#562155",
     },
     {
       title: "Control Preventivo",
@@ -20,13 +21,13 @@ const Home = () => {
       description:
         "Chequeos regulares para detectar problemas a tiempo. Incluye análisis de sangre, orina, control de peso y evaluación dermatológica. La prevención es clave para una vida larga y saludable.",
       cta: "Agendar control",
-      color: "#8e8ca3",
+      color: "#562155",
     },
     {
       title: "Estudios Especializados",
       image: rayoxVet,
       description: "Tecnología de última generación para diagnósticos precisos: ecografías, radiografías digitales, ecodoppler cardíaco y más. Resultados rápidos y confiables.",
-      cta: "Ver estudios",
+      cta: "Pedir estudios",
       color: "#562155",
     },
   ];
@@ -47,9 +48,11 @@ const Home = () => {
             <div className={styles.textContainer}>
               <h3 className={styles.serviceTitle}>{service.title}</h3>
               <p className={styles.serviceDescription}>{service.description}</p>
-              <button className={styles.ctaButton} style={{ backgroundColor: service.color }}>
-                {service.cta}
-              </button>
+              <Link to="/appointment">
+                <button className={styles.ctaButton} style={{ backgroundColor: service.color }}>
+                  {service.cta}
+                </button>
+              </Link>
             </div>
           </div>
         ))}
