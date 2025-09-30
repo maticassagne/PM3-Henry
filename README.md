@@ -22,7 +22,7 @@ El objetivo fue construir un proyecto **Full Stack** (frontend + backend) para l
 - Manejo de estados globales con React.
 
 ## 🛠️ Instalación
-1. Clonar el repositorio  
+1. Clonar el repositorio:  
    ```bash
    git clone https://github.com/maticassagne/PM3-Henry.git
 2. Instalar dependencias en /front y /back:
