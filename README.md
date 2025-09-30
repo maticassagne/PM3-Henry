@@ -25,10 +25,11 @@ El objetivo fue construir un proyecto **Full Stack** (frontend + backend) para l
 1. Clonar el repositorio  
    ```bash
    git clone https://github.com/maticassagne/PM3-Henry.git
-
-Instalar dependencias en /front y /back:
-cd front && npm install
-cd ../back && npm install
-Configurar las variables de entorno (.env) para la base de datos.
-Ejecutar el backend y frontend en paralelo:
-npm start
+2. Instalar dependencias en /front y /back:
+   ```bash
+   cd front && npm install
+   cd ../back && npm install
+3. Configurar las variables de entorno (.env) para la base de datos.
+4. Ejecutar el backend y frontend en paralelo:
+   ```bash
+   npm start
